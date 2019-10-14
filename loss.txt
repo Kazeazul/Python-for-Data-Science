@@ -1,0 +1,11 @@
+# Print the first five rows of the data frame
+print(test_pred_df.head())
+
+# Calculate the bank's expected loss and assign it to a new column
+test_pred_df['expected_loss'] = test_pred_df['prob_default'] * test_pred_df['loan_amnt'] * test_pred_df['loss_given_default']
+
+# Calculate the total expected loss to two decimal places
+tot_exp_loss = round(np.sum(test_pred_df['expected_loss']),2)
+
+# Print the total expected loss
+print('Total expected loss: ', '${:,.2f}'.format(tot_exp_loss))
